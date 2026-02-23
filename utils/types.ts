@@ -1,11 +1,11 @@
-export interface Root {
+export type MovieList = {
   page: number;
   results: Movie[];
   total_pages: number;
   total_results: number;
-}
+};
 
-export interface Movie {
+export type Movie = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -20,4 +20,4 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
-}
+};
