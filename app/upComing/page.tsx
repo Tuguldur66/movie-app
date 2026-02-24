@@ -1,22 +1,20 @@
-import { MovieCard } from "./MovieCard";
+import { MovieCard } from "../_components/MovieCard";
 import { getUpComingMovies } from "@/utils/getData";
-import Link from "next/link";
 
 export const UpComingMovies = async () => {
   const { results } = await getUpComingMovies();
-  const firstTenMovies = results.slice(0, 10);
 
   return (
     <div>
       <div className="text-[24px] p-6 flex justify-between">
         <h1>Upcoming</h1>
-        <Link href="/upComing">see more</Link>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-6 md:py-6 md:px-20">
-        {firstTenMovies.map((movie) => (
+        {results.map((movie) => (
           <MovieCard key={movie.id} {...movie} />
         ))}
       </div>
     </div>
   );
 };
+export default UpComingMovies;

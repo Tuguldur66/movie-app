@@ -10,7 +10,7 @@ export const MovieCard = ({ title, vote_average, poster_path }: Movie) => {
           alt={title}
         />
       </div>
-      <div className="p-8px w-53.25 h-5.75 flex gap-1.25x p-2 ">
+      <div className="p-8px w-53.25 h-5.75 flex gap-1.25x p-2u ">
         <Star className="w-4 h4 text-yellow-300 " /> {vote_average?.toFixed(2)}
         /10
       </div>

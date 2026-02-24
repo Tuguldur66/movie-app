@@ -46,9 +46,11 @@ export const getUpComingMovies = async (): Promise<MovieList> => {
   return data;
 };
 
-export const getPopularMovies = async (): Promise<MovieList> => {
+export const getPopularMovies = async (
+  page: string | undefined,
+): Promise<MovieList> => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page ?? 1}`,
     {
       method: "GET",
       headers: {
@@ -62,9 +64,9 @@ export const getPopularMovies = async (): Promise<MovieList> => {
   return data;
 };
 
-export const getTopRatedMovies = async (): Promise<MovieList> => {
+export const getTopRatedMovies = async (page: string): Promise<MovieList> => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page ?? 1}`,
     {
       method: "GET",
       headers: {
