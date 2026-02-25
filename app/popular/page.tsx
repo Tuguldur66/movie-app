@@ -33,14 +33,16 @@ const PopularPage = async ({
       </div>
       <Pagination>
         <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
+          {Number(page) !== 1 && (
+            <PaginationItem>
+              <PaginationPrevious href={`?page=${Number(page ?? 1) - 1}`} />
+            </PaginationItem>
+          )}
           {arr.map((pageNum) => {
-            if (Number(page) + 2 < pageNum) {
+            if (Number(page ?? 1) + 2 < pageNum) {
               return null;
             }
-            if (Number(page) > pageNum + 2) {
+            if (Number(page ?? 1) > pageNum + 2) {
               return null;
             }
             return (
@@ -52,9 +54,11 @@ const PopularPage = async ({
             );
           })}
 
-          <PaginationItem>
-            <PaginationNext />
-          </PaginationItem>
+          {Number(page) !== total_pages && (
+            <PaginationItem>
+              <PaginationNext href={`?page=${Number(page ?? 1) + 1}`} />
+            </PaginationItem>
+          )}
         </PaginationContent>
       </Pagination>
     </div>

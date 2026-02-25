@@ -3,7 +3,7 @@ import { getUpComingMovies } from "@/utils/getData";
 import Link from "next/link";
 
 export const UpComingMovies = async () => {
-  const { results } = await getUpComingMovies();
+  const { results } = await getUpComingMovies(undefined);
   const firstTenMovies = results.slice(0, 10);
 
   return (

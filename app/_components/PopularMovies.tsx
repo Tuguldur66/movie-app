@@ -3,7 +3,7 @@ import { MovieCard } from "./MovieCard";
 import { getPopularMovies } from "@/utils/getData";
 
 export const PopularMovies = async () => {
-  const { results } = await getPopularMovies();
+  const { results } = await getPopularMovies(undefined);
   const firstTenMovies = results.slice(0, 10);
   return (
     <div>

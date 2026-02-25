@@ -3,7 +3,7 @@ import { MovieCard } from "./MovieCard";
 import { getTopRatedMovies } from "@/utils/getData";
 
 export const TopRatedMovies = async () => {
-  const { results } = await getTopRatedMovies();
+  const { results } = await getTopRatedMovies(undefined);
   const firstTenMovies = results.slice(0, 10);
   return (
     <div>

@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChevronDown, Film, Moon, Search } from "lucide-react";
+import Link from "next/link";
 
 export const MovieHeader = () => {
   return (
     <div className="w-full  flex items-center  justify-between py-3">
       <div className="flex items-center gap-2">
-        <Film className="text-[#4338CA]" />{" "}
-        <p className="text-[#4338CA] text-[16px] font-bold italic">Movie Z</p>
+        <Link href="/">
+          <Film className="text-[#4338CA]" />{" "}
+          <p className="text-[#4338CA] text-[16px] font-bold italic">Movie Z</p>
+        </Link>
       </div>
       <div className="flex items-center gap-3">
         <Button variant="outline">
