@@ -14,10 +14,10 @@ const MovieDetails = async ({ params }: DetailsPageProps) => {
   const { hour, min } = runTimeToHour(movie.runtime);
 
   return (
-    <div className="w-full flex justify-center flex-col">
+    <div className="flex justify-center flex-col">
       <div className="w-270 flex-row flex justify-between m-auto">
         <div className="">
-          <h1 className="text-[36px] font-bold">{movie.original_title}</h1>
+          <h1 className="text-[36px] font-bold">{movie.title}</h1>
           <p className="font-normal text-lg">
             {movie.release_date}·{hour + "h"} {min + "m"}
           </p>
@@ -56,8 +56,21 @@ const MovieDetails = async ({ params }: DetailsPageProps) => {
           alt=""
         />
       </div>
-      <div>
-        <Badge></Badge>
+      <div className="w-270 m-auto">
+        <div className="flex gap-2  mt-6">
+          {movie.genres?.map((genre: { id: number; name: string }) => (
+            <Badge
+              key={genre.id}
+              variant="outline"
+              className="text-xs font-semibold"
+            >
+              {genre.name}
+            </Badge>
+          ))}
+        </div>
+        <div className="font-normal">
+          <p className=" ">{movie.overview}</p>
+        </div>
       </div>
     </div>
   );
