@@ -1,6 +1,7 @@
 import { MovieCard } from "./MovieCard";
 import { getUpComingMovies } from "@/utils/getData";
 import Link from "next/link";
+import { MoveRight } from "lucide-react";
 
 export const UpComingMovies = async () => {
   const { results } = await getUpComingMovies(undefined);
@@ -10,9 +11,11 @@ export const UpComingMovies = async () => {
     <div>
       <div className="text-[24px] p-6 flex justify-between">
         <h1>Upcoming</h1>
-        <Link href="/upComing">see more</Link>
+        <Link href="/upComing">
+          see more <MoveRight />
+        </Link>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-6 md:py-6 md:px-20">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-6 md:p-0">
         {firstTenMovies.map((movie) => (
           <MovieCard key={movie.id} {...movie} />
         ))}
