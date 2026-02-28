@@ -72,3 +72,34 @@ export interface SpokenLanguage {
   iso_639_1: string;
   name: string;
 }
+
+export interface Credits {
+  cast: {
+    adult: boolean;
+    gender: number;
+    id: number;
+    known_for_department: [string];
+    name: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string | null;
+    credit_id: string;
+    department: string;
+    job: string;
+  };
+  crew: [
+    {
+      adult: boolean;
+      gender: number;
+      id: number;
+      known_for_department: string;
+      name: string;
+      original_name: string;
+      popularity: number;
+      profile_path: string;
+      credit_id: string;
+      department: string;
+      job: string;
+    },
+  ];
+}

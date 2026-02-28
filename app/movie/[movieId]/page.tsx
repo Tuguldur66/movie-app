@@ -1,7 +1,9 @@
 import { getMovieById } from "@/utils/getData";
+import { getCredits } from "@/utils/getData";
 
 import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { log } from "console";
 type DetailsPageProps = {
   params: Promise<{ movieId: string }>;
 };
@@ -9,6 +11,8 @@ console.log(getMovieById);
 
 const MovieDetails = async ({ params }: DetailsPageProps) => {
   const { movieId } = await params;
+  const credits = await getCredits(movieId);
+  console.log(credits);
 
   const movie = await getMovieById(movieId);
   const { hour, min } = runTimeToHour(movie.runtime);
@@ -70,6 +74,46 @@ const MovieDetails = async ({ params }: DetailsPageProps) => {
         </div>
         <div className="font-normal">
           <p className=" ">{movie.overview}</p>
+        </div>
+        {/* cast */}
+        <div className="mt-6">
+          <div className="flex flex-row gap-13.25 h-10.25 border-b-4">
+            <p className="font-bold ">Director</p>
+            {credits.crew
+              ?.filter(
+                (person: { id: number; name: string; job: string }) =>
+                  person.job === "Director",
+              )
+              .map((director: { id: number; name: string }) => (
+                <p key={director.id}>{director.name}</p>
+              ))}
+          </div>
+          <div>
+            <p className="font-semibold">Writer</p>
+            {credits.crew
+              ?.filter(
+                (person: { id: number; name: string; job: string }) =>
+                  person.job === "Novel",
+              )
+              .map((writer: { id: number; name: string }) => (
+                <p key={writer.id}>{writer.name}</p>
+              ))}
+          </div>
+          <div>
+            <p className="font-semibold">stars</p>
+            {credits.cast
+              ?.filter(
+                (actor: {
+                  id: number;
+                  name: string;
+                  known_for_department: string;
+                }) => actor.known_for_department === "Acting",
+              )
+              .slice(0, 3)
+              .map((actor: { id: number; name: string }) => (
+                <p key={actor.id}>{actor.name}</p>
+              ))}
+          </div>
         </div>
       </div>
     </div>
